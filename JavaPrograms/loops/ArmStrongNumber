@@ -1,0 +1,51 @@
+package Loops;
+
+import java.util.Scanner;
+
+public class ArmStrong {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("enter a number: ");
+		
+		int num=sc.nextInt();
+		int power=0;
+		int originalnum=num;
+		
+	
+		while(num>0) {
+			
+			num=num/10;
+			power++;
+			
+		}
+		num=originalnum;
+		int result=0;
+		while(num>0){
+			int temp=num%10;
+			int sum=temp;
+			for(int i=0; i<power-1; i++) {
+				sum=sum*temp;
+			}
+
+			 result=result+sum;
+			 
+			num=num/10;
+			
+
+		}
+		if(result==originalnum) {
+			System.out.println("number is armstrong number:");
+
+		}
+		else {
+			System.out.println("number is not armstrong number:");
+
+		}
+		
+		
+	}
+
+}
