@@ -1,0 +1,35 @@
+package Loops;
+
+import java.util.Scanner;
+
+public class Palindrom {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.err.println("enter a a number :");
+		
+		int num=sc.nextInt();		
+		int reverseNum=0;		
+		int enteredNum=num;
+		
+		while(num>0) {
+			int digit=num%10;
+			reverseNum=reverseNum*10+digit;
+			num/=10;
+		}
+		if(enteredNum==reverseNum) {
+			System.out.println("the number is palindrome:");
+		}
+		else {
+			System.out.println("the number is not  palindrome:");
+
+		}
+		
+		
+		
+	}
+
+}
