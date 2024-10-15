@@ -1,0 +1,236 @@
+package package1;
+
+import java.util.Scanner;
+
+public class AtmProject {
+	public static void changePin(int pin) {
+		Scanner cp= new Scanner(System.in);
+		
+		System.out.println("old pin");
+		int oldPin=cp.nextInt();
+		if(oldPin==pin) {
+			System.out.println("enter new Pin:");
+			int newPin=cp.nextInt();
+			System.out.println("confirm Pin:");
+			int newPin2=cp.nextInt();
+			
+			if(newPin==newPin2) {
+				System.out.println("Your password has been changed.");
+				pin=newPin;
+				System.out.println("Your new pin."+pin);
+
+			}
+			else {
+				System.out.println("Mismatch Pin try again:");
+
+			}
+			
+			
+			
+		}
+		else {
+			System.out.println("wrong old pin try again:");
+
+		}
+		
+	}
+	
+    public static void checkBalance(double balance, String phoneNo, int pin) {
+    	Scanner cb = new Scanner(System.in);
+    	System.out.println("Enter Phone Number:");
+    	String tempPhone= cb.next();
+    	System.out.println("Enter Pin:");
+    	int tempPin=cb.nextInt();
+	
+    	if(tempPhone.equals(phoneNo)) {
+    		if(tempPin==pin) {
+    			System.out.println("your total balance is :  "+ balance );
+    		}
+    	}
+    	else {
+    		System.out.println("Invalid Phone number.");
+    	}
+    	
+	}
+    
+    public static void changePhoneNumber(String phoneNo) {
+    	
+Scanner cph= new Scanner(System.in);
+		
+		System.out.println("old Phone Number");
+		String oldPhoneNo=cph.next();
+		
+		if(oldPhoneNo.equals(phoneNo)) {
+			System.out.println("enter new Phone Number:");
+			String newPhoneNo=cph.next();
+			
+			System.out.println("confirm Phone Number:");
+			String newPhoneNo2=cph.next();
+			
+			if(newPhoneNo.equals(newPhoneNo2)) {
+				System.out.println("Your Phone Number has been changed.");
+				phoneNo=newPhoneNo;
+				System.out.println("Your new Phone Number: " +phoneNo);
+
+			}
+			else {
+				System.out.println("Mismatch Phone number try again:");
+
+			}
+			
+			
+			
+		}
+		else {
+			System.out.println("wrong old Phone Number, try again:");
+
+		}
+	
+		
+	}
+    
+    public static void withdrawAmount(double balance, int pin) {
+    	
+    	System.out.println("enter amount to withdraw: ");
+    	Scanner with=new Scanner(System.in);
+    	int withdraw=with.nextInt();
+    	System.out.println("enter Pin: ");
+    	int tempPin=with.nextInt();
+    	
+    	if(tempPin==pin) {
+    		balance=balance-withdraw;
+    		System.out.println("you have withdrw"+withdraw+" rupies");
+    		System.out.println("your remaining balance is  "+balance+"  rupies");
+
+    	}
+    	else {
+    		System.out.println("Invalid Pin ,Try again");
+
+    	}
+
+    	
+    	
+		
+	}
+    
+    public static void dipositeAmount(String accountNo,double balance) {
+    	System.out.println("Enter Account Number : ");
+    	Scanner dip=new Scanner(System.in);
+    	String tempAccountNo=dip.next();
+    	System.out.println("enter amount to diposite : ");
+    	int diposite=dip.nextInt();
+    	
+    	if(tempAccountNo.equals(accountNo)) {
+    		balance=balance+diposite;
+    		System.out.println("you have diposited "+diposite+" rupies");
+    		System.out.println("your Total  balance is  "+balance+"  rupies");
+
+    	}
+    	else {
+    		System.out.println("Invalid Account Number ,Try again");
+
+    	}
+	}
+    public static void logout() {
+        System.out.println("You have successfully logged out. Thank you for using our service.");
+
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		float balance= 10000;
+		int pin = 4242;
+		String phoneNo= "9424783078";
+		String name = "Kamlesh Rajak";
+		String accountNo= "33610965968";
+		
+		Scanner sc=new Scanner(System.in);	
+		int count=0;
+		
+		while(count<=3) {
+			System.out.println("Enter your Account Number : ");
+			String tempAccNo =sc.next();
+			
+			if(tempAccNo.equals(accountNo)) {
+				
+				System.out.println("Enter your Pin             : ");
+				int tempPin=sc.nextInt();	
+				if(tempPin==pin) {
+					System.out.println("                 WELCOME TO ATM ");
+					System.out.println();		
+					
+					count=4;
+
+				}
+				else {
+					count+=count+1;
+					if(count<=3) {
+						System.out.println("invalid Account nubmer, Try again : ");
+					}
+					else {
+						System.out.println("your 3 attempt are done try after some time :");
+					}
+				}
+				
+			}
+			else {
+				count+=count+1;
+				if(count<=3) {
+					System.out.println("invalid Account nubmer, Try again : ");
+				}
+				else {
+					System.out.println("your 3 attempt are done try after some time :");
+				}
+
+			}
+		}
+		
+		boolean exit=false;
+		while(!exit) {
+			System.out.println("               1. Change Pin ");
+			System.out.println("               2. Check balance");
+			System.out.println("               3. Change phone number ");
+			System.out.println("               4. Withdraw amount ");
+			System.out.println("               5. Deposit amount ");
+			System.out.println("               6. Logout ");
+			
+			System.out.print("Please select an option :  ");
+			int choice=sc.nextInt();
+			
+			switch(choice) {
+				case 1:changePin(pin);
+						break;
+				case 2: checkBalance(balance, phoneNo,pin);
+				        break;
+				        
+				case 3: changePhoneNumber(phoneNo);
+		        	break;
+		        case 4: withdrawAmount(balance, pin);
+		        	break;
+		        case 5:dipositeAmount(accountNo,balance) ;
+		        	break;
+		        case 6:  
+		        	logout();  
+                    exit = true; 
+                    break;
+
+		        	
+		        	
+		        default: System.out.println("Please Enter valid choice");
+				        
+				        
+			}
+			
+		}
+			
+		
+	}
+}
+
+
+
+
+
+
+
+
