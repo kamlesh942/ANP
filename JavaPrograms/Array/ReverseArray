@@ -1,0 +1,28 @@
+package Array;
+
+public class Reverse {	
+	public static void main(String[] args) 
+	{
+		int a[]=new int[10];
+		
+		for(int i=0;i<a.length;i++) 
+		{
+			a[i]= 5*(i+1);  
+		}
+
+		for(int i:a) 
+			System.out.println(i);
+		
+		for(int i=0, j=a.length-1; i<a.length/2;i++, j--)
+		{
+			int temp=a[i];
+			a[i]=a[j];
+			a[j]=temp;
+		}
+		
+		System.out.println("After Reverse Array:- ");
+		for(int x:a) System.out.println(x);		
+		
+	}
+
+}
