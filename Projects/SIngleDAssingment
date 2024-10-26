@@ -1,0 +1,312 @@
+package Array;
+
+import java.util.Scanner;
+
+public class SingleDAssingment {
+	int arr[];
+	int index;
+	static Scanner sc;
+	
+	static {
+		sc=new Scanner(System.in);
+		System.out.println("Single D Program is Starting............");
+		try {
+			Thread.sleep(2000);// puase for 2 seconds
+			
+		}
+		catch(InterruptedException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public SingleDAssingment(int size) {
+		arr=new int[size];
+		index=-1;
+		
+	}
+	
+	public void menu() {
+		int choice;
+		do {
+			System.out.println("0. exit :");
+
+			System.out.println("1. DIsplay Array Elements:");
+			System.out.println("2. Insertion at End:");
+			System.out.println("3. Insertion at Beginning:");
+			System.out.println("4. Insertion at the Given Index:");
+			System.out.println("5. Deletion at End:");
+			System.out.println("6. Deletion at First:");
+			System.out.println("7. Deletion by Index :");
+			System.out.println("8. Deletion by value :");
+			System.out.println("9. Search a Value and Return Index:");
+			System.out.println("10. Rotate Array Clockwise :");
+			System.out.println("11. Rotate Array AntiClockwise :");
+			System.out.println("12. Sum of Array:");
+			System.out.println("13. Apdate existing Value of Array:");
+			
+			System.out.println("Enter your Choice :");
+			choice=sc.nextInt();
+			
+			if(choice==0) {
+				System.out.println("goodbye !");
+				break;
+			}
+			else if(choice==1) display();
+			else if(choice==2) insertEnd();
+			else if(choice==3) insertBeginning();
+			else if(choice==4) insertAtIndex();
+			else if(choice==5) deleteEnd();
+			else if(choice==6) deleteBeginning();
+			else if(choice==7) deleteByIndex();
+			else if(choice==8) deleteByValue();
+			else if(choice==9) ReturnIndexofValue();
+			else if(choice==10) rotateArrayClockwise();
+			else if(choice==11) rotateArrayAntiClockwise();
+			else if(choice==12) sumArray();
+			else if (choice==13)updateValue();
+
+			else System.out.println("Wrong Choice  \n Try Agian !! !");
+			
+		}while(choice!=0);
+	}
+	
+	public boolean isFull() {
+		if(index==arr.length-1)
+			return true;
+		else 
+			return false;
+	}
+	
+	public boolean isEmpty() {
+
+		if(index==-1)
+			return true;
+		else 
+			return false;
+    }
+	
+	public void display() {
+		System.out.println("Array Elements:");
+		for(int x:arr) 
+			System.out.print(x+"\t");
+		System.out.println();
+
+	}
+	
+	
+	public void shiftArrayLefttoRight(int sIndex) {
+		for(int i=index+1; i>sIndex; i--) {
+			arr[i]=arr[i-1];
+			
+		}
+		index++;
+	}
+	
+	public void shiftArrayRighttoLeft(int sIndex) {
+		for(int i=sIndex; i<index; i++) {
+			arr[i]=arr[i+1];
+		}
+		arr[index--]=0;;
+	}
+	
+public void insertEnd() {
+		
+		
+		if(isFull()) 
+			System.out.println("Array is Full !! \n Can't Insert more values !!");
+		else {
+
+			System.out.println("Enter Value :");
+			int value=sc.nextInt();
+			
+			arr[index+1]=value;
+			System.out.println("Value insertion successfully Completed !");
+			index++;
+		}
+	}
+	
+	
+	public void insertBeginning() {
+		if(isFull()) 
+			System.out.println("Array is Full !! \n Can't Insert more Values|| :");
+		else {
+			shiftArrayLefttoRight(0);
+			System.out.println("Enter  New Value :");
+			arr[0]=sc.nextInt();
+			
+			System.out.println(" Value Inserted Successfully :");
+
+		}
+	}
+	
+	
+	
+	public void insertAtIndex() {
+		
+		if(isFull()) {
+			System.out.println("array is full :");
+		}
+		else {
+			System.out.println("enter the index:");
+			int ind=sc.nextInt();
+			System.out.println("enter the value:");
+			int value=sc.nextInt();
+			
+			shiftArrayRighttoLeft(ind);
+			arr[ind]=value;
+
+		}
+	}
+	
+	public void deleteEnd() {
+		if(isEmpty()) {
+			System.out.println(" Array is Empty :");
+		}
+		else {
+			
+			arr[index]=0;
+			System.out.println("  deleted:" + arr[index--]);
+
+		}
+		display();
+	}
+	
+	public void deleteBeginning() {
+		
+		if(isEmpty()) {
+			System.out.println(" Array is Empty :");
+		}
+		else {
+			System.out.println("  Element deleted successfully:" + arr[0]);
+			shiftArrayRighttoLeft(0);
+		}
+		display();
+	}
+	
+	public void deleteByIndex() {
+		if(isEmpty()) 
+			System.out.println(" Array is Empty :");
+		else {
+			
+			System.out.println("enter any a index");
+			int ind=sc.nextInt();
+			shiftArrayRighttoLeft(ind);
+			System.out.println("  Element deleted successfully:");
+		}
+		display();
+	}
+	
+	public void deleteByValue() {
+		if(isEmpty()) 
+			System.out.println(" Array is Empty :");
+		else {
+			
+			System.out.println("enter the value :");
+			
+			int value =sc.nextInt();
+			int index2=0;
+			for(int i=0; i<=index; i++) {
+				
+				if(arr[i]==value) {
+					shiftArrayRighttoLeft(index2);
+				}
+				index2++;
+			}
+
+		display();
+	}
+		
+	
+	
+	public void ReturnIndexofValue() {
+		
+		if(isEmpty()) {
+			System.out.println(" Array is Empty :");
+
+		}
+		else {
+			System.out.println("enter any a value");
+			int value=sc.nextInt();
+		
+			for(int i=0; i<=index; i++){
+				if(value==arr[i]) {
+					System.out.println(" Element deleted successfully at index :"+i);	
+				}
+			}
+			
+		}
+	}
+	
+	public void rotateArrayClockwise() {
+	    System.out.println("enter number of rotations");
+	    int num = sc.nextInt();
+	    for (int i = 0; i < num; i++) {
+	        int temp = arr[index];  
+	        for (int j = index; j > 0; j--) {
+	            arr[j] = arr[j - 1];  
+	        }
+	        arr[0] = temp; 
+	    }
+	    display();  
+	}
+	
+	public void rotateArrayAntiClockwise() {
+	    System.out.println("enter number of rotations");
+	    int num = sc.nextInt();
+	    for (int i = 0; i < num; i++) {
+	        int temp = arr[0];  
+	        for (int j = 0; j <index; j++) {
+	            arr[j] = arr[j+1];  
+	        }
+	        arr[index] = temp; 
+	    }
+	    display();  
+	}
+	
+	public void sumArray() {
+		
+		if(isEmpty()) System.out.println(" Array is Empty :");
+		else {
+			int sum= 0;
+			for(int i=0; i<=index; i++) {
+				sum= sum+arr[i];
+			}
+			System.out.println("sum of array:"+sum);
+		}
+		
+	}
+	
+	
+	public void updateValue() {
+	    if (isEmpty()) {
+	        System.out.println("Array is Empty.");
+	    } else {
+	        System.out.println("Enter the index of the value you want to update:");
+	        int ind = sc.nextInt();
+
+	        if (ind < 0 || ind > index) {
+	            System.out.println("Invalid index! Please enter a valid index.");
+	        } else {
+	            System.out.println("Enter the new value:");
+	            int newValue = sc.nextInt();
+
+	            arr[ind] = newValue;
+	            System.out.println("Value updated successfully.");
+	        }
+	    }
+	    display();
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("Enter size of array :");
+		int size=sc.nextInt();
+		
+		SingleDAssingment sd=new SingleDAssingment(size);
+		sd.menu();
+		
+	}
+
+}
