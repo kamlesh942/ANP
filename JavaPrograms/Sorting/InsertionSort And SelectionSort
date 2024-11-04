@@ -1,0 +1,60 @@
+package Sorting;
+
+public class insertionSort {
+	public void InsertionSort(int arr[])
+	{
+	    for (int i = 0; i < arr.length-1; ++i) {
+	        
+	        for(int j=i; j<arr.length; j++) {
+	        	if(arr[i]>arr[j]) {
+	        		int temp=arr[i];
+	        		arr[i]=arr[j];
+	        		arr[j]=temp;
+	        	}
+	        }
+	    }
+	}
+	
+	public void SelectionSort(int arr[]) {
+	    for (int i = 0; i < arr.length-1; i++) {
+	    	int min=arr[i];
+	    	int loc=0;
+			for(int j=i; j<=arr.length; j++) {
+				if(arr[i]>arr[j]) {
+					loc=arr[j];
+				}
+			}
+			int temp=loc;
+    		loc=min;
+    		min=temp;
+			
+		}
+	}
+
+	/* A utility function to print array of size n */
+	public void printArray(int arr[])
+	{
+	    for(int x:arr) {
+	    	System.out.print(x +"\t");
+	    }
+	        
+	    
+	}
+	public static void main(String[] args) {
+
+int arr[]= {12,1,4,3,5,7,6,78,67,03};
+		
+		insertionSort is=new insertionSort();
+		
+		System.out.println("Before sorting");
+		is.printArray(arr);
+		System.out.println("\n-----------------------------------------------------------------------------------------------");	
+
+		is.InsertionSort(arr);
+		System.out.println("\n After sorting");
+
+		is.printArray(arr);
+	}
+
+}
+
