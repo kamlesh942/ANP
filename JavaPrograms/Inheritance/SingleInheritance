@@ -1,0 +1,31 @@
+package Inheritance;
+
+public class SinglInheritance {
+	public  void addition(int a,int b) {
+		System.out.println("addition"+ (a+b));
+	}
+}
+
+// at second class
+public final class inheritance2 extends SinglInheritance {
+	public  void addition(int a,int b,int c) {
+		
+		System.out.println("addition"+ (a+b+c));
+	}
+}
+
+// at 3rd class
+public class Inheritance3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		inheritance2 ad= new inheritance2();
+		
+		
+		ad.addition(12,23);
+		ad.addition(12,23,21);
+
+		
+	}
+
+}
