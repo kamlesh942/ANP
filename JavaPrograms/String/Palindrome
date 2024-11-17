@@ -1,0 +1,48 @@
+package Strings;
+
+import java.util.Scanner;
+
+public class CheckPalindromeString {
+	
+	public void Palindrome(String str) {
+		int n=str.length();
+		char[] charArray= str.toCharArray();
+		
+		if(n==1) {
+			System.out.println("the Srting is palindrim ");
+		}
+		else {
+			int i=0;
+			boolean flag=false;
+			while(i<n/2) {
+				if(charArray[i]==charArray[n-i-1]) {
+					i++;
+					flag=true;
+				}
+				else {
+					flag = false;
+					i++;
+				}
+				
+			}
+			if(flag) {
+				System.out.println("the string is palindrome");
+			}
+			else {
+				System.out.println("the string is not palindrome");
+
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		System.out.println(" enter the string ");
+		Scanner sc=new Scanner(System.in);
+		String str=sc.nextLine();
+		
+		CheckPalindromeString pl=new CheckPalindromeString();		
+	    pl.Palindrome(str);
+
+	}
+
+}
