@@ -1,0 +1,20 @@
+package exceptions;
+
+import java.util.Scanner;
+
+public class ArrayIndexexeption {
+	public static void main(String[] args) {
+		int arr[]= {2,3,4,5,6};
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter the index for the element :");
+		int n=sc.nextInt();
+		try {
+			System.out.println("element is :"+arr[n]);
+
+		} catch (Exception e) {
+			System.out.println("enter the valid index of the arr"+e);
+		}
+		
+		
+	}
+}
