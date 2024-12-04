@@ -1,0 +1,23 @@
+package exceptions;
+
+import java.util.Scanner;
+
+public class InputFarmatException {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("enter a the integer value:");
+		
+		Scanner sc=new Scanner(System.in);
+		
+		
+		try {
+			int num=sc.nextInt();
+			System.out.println("you have input the:  "+num);
+		} catch (Exception e) {
+			System.out.println("the number is not a integer :"+e);
+		}
+
+	}
+
+}
